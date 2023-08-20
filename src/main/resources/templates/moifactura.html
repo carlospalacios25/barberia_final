@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es"  xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Insertar factura</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Insertar compra</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+<div class="container mt-4">
+    <div class="col-sm-6">
+        <form th:action="@{/guardarfactura}" th:object="${factura}" method="post">
+            <div class="card">
+                <div class="card-header"></div>
+                <h3>Insertar compra</h3>
+                <div class="card-body"></div>
+                <div class="form-group">
+                    <label  class="col-md-2">id Servicio</label>
+                    <select th:field="*{ser_id}" class="from-control form-control-sm- col-md-6" >
+                        <option th:each="servicio:${servicio}"
+                                th:value="${servicio.ser_id}"
+                                th:text="${servicio.ser_id}">
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label  class="col-md-2">id producto</label>
+                    <select th:field="*{pro_id}" class="from-control form-control-sm- col-md-6" >
+                        <option th:each="producto:${producto}"
+                                th:value="${producto.pro_id}"
+                                th:text="${producto.pro_nombre}">
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label  class="col-md-2">cantidad</label>
+                    <input th:field="*{fac_cantidad}" type="number" class="from-control"/>
+                </div>
+                <div class="form-group">
+                    <label  class="col-md-2">precio total</label>
+                    <input th:field="*{fac_precio_total}" type="number" class="from-control" placeholder="precio"/>
+                </div>
+                <div class="form-group">
+                    <label  class="col-md-2">descuentol</label>
+                    <input th:field="*{fac_descuento}" type="number" class="from-control" placeholder="descuento"/>
+                </div>
+                <div class="card-footer"></div>
+                <input type="submit" value="Guardar" class="btn btn-success"/>
+                <a href="/factura" class="btn btn-success">Volver</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
